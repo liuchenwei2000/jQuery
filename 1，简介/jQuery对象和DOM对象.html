@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- 
+要分清对象到底是 jQuery 对象还是 DOM 对象，以及它们之间的关系。
+-->
+<script type="text/javascript" src="../jquery-1.11.3.js"></script>
+
+<script type="text/javascript">
+    // 下面获取的是一个 DOM 对象，可以通过 JavaScript 中的 getElementXXX
+    // 相关方法获取元素节点，像这样得到的 DOM 元素就是 DOM 对象。
+    var checkBox = document.getElementById("cb");
+    // DOM 对象可以使用 JavaScript 中的方法。
+    var innerHTML = checkBox.innerHTML;
+
+	$(document).ready(function() {
+	    // jQuery 对象就是通过 jQuery 包装 DOM 对象后产生的对象。一般使用 $ 前缀标识。
+		var $cb = $("#cb");
+		// jQuery 对象无法使用 DOM 对象的任何方法，只能使用 jQuery 中的方法。
+        // 同理，DOM 对象也不能使用 jQuery 里的方法。
+		var html = $cb.html();
+
+		// jQuery 对象和 DOM 对象的相互转换
+        // 通过下面两种方式都可以将一个 jQuery 对象转换成 DOM 对象：
+        var cb_1 = $cb[0];
+        var cb_2 = $cb.get(0);
+
+        // 通过 $() 将 DOM 对象包装起来，就可以获得一个 jQuery 对象。
+        // $() 函数就是一个 jQuery 对象的制造工厂。
+        var $cb_2 = $(cb_1);
+	});
+</script>
+</head>
+    <input type="checkbox" id="cb">
+<body>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- 
+jQuery 库位于一个 JS 文件中，其中包含了所有的 jQuery 函数。
+通过下面的方式引入 jQuery 库。
+-->
+<script type="text/javascript" src="../jquery-1.11.3.js"></script>
+
+<script type="text/javascript">
+	// $ 是 jQuery 的一个简写形式，$() 与 jQuery() 是等价的
+    /**
+	 * $(document).ready(function) 的作用类似于传统 javaScript 中的 window.onload 方法，区别如下：
+	 *
+	 * 1，执行时机
+	 * window.onload 必须等待网页中的所有内容都加载完毕后（包括图片）才能执行。
+	 * $(document).ready() 网页中所有 DOM 结构绘制完毕后就执行，可能 DOM 元素关联的东西并没有加载完
+	 *
+	 * 2，编写个数
+	 * window.onload 不能编写多个
+	 * $(document).ready() 能同时编写多个，顺序执行
+	 *
+     * 3，简化写法
+	 * $(document).ready() 可以简写为 $(function)
+     */
+	$(document).ready(function() {
+		alert("Hello jQuery");
+	});
+</script>
+</head>
+
+<body>
+</body>
+</html>
