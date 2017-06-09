@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <script type="text/javascript" src="../jquery-1.11.3.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // 绑定多个事件类型
+            $("#div1").bind("mouseover click", function () {
+                alert(this.id);
+            });
+
+            // 添加事件命名空间，便于管理
+            // 可以把为元素绑定的多个事件类型用命名空间规范起来
+            $("#div2").bind("click.plugin", function () {
+                alert("click.plugin");
+            });
+
+            $("#div2").bind("mouseover.plugin", function () {
+                alert("mouseover.plugin");
+            });
+
+            // 可以使用下面的方式一次性删除 plugin 命名空间的所有事件
+//            $("#div2").unbind(".plugin");
+        });
+    </script>
+</head>
+
+<body>
+<div id="div1">Click me!</div>
+<div id="div2">Click me!!</div>
+</body>
+</html>

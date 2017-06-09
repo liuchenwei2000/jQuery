@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <script type="text/javascript" src="../jquery-1.11.3.js"></script>
+    <script type="text/javascript">
+        // 本例使得单击 <span> 元素时，只触发 <span> 元素的 click 事件，而不触发 <div> 的 click 事件。
+        $(document).ready(function () {
+            // 在事件处理函数中添加一个参数 event，这个参数是事件对象。
+            // 当单击 <span> 元素时，事件对象就被创建了，这个对象只有事件处理函数能访问到。
+            // 事件处理函数执行完毕后，事件对象就被销毁。
+            $("span").click(function (event) {
+                alert(this.tagName);
+                // 下面的方式可以停止事件冒泡，从而阻止事件中其他对象的事件处理函数被执行
+                event.stopPropagation();
+                console.log(event.type);// 获取事件的类型
+                console.log(event.target);// 获取触发事件的元素
+                console.log(event.which);// 获取鼠标单击事件中获取到鼠标的左、中、右键，值分别对应 1、2、3
+            });
+            $("div").click(function () {
+                alert(this.tagName);
+            });
+        });
+    </script>
+</head>
+
+<body>
+<div><span>Click me!</span></div>
+</body>
+</html>

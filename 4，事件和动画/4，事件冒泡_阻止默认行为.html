@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <script type="text/javascript" src="../jquery-1.11.3.js"></script>
+    <script type="text/javascript">
+        // 网页中的元素有自己默认的行为，例如单击超链接后会跳转，单击提交按钮后表单会提交，有时需要阻止元素的默认行为。
+        // jQuery 中提供了 preventDefault() 方法来阻止元素的默认行为。
+        $(document).ready(function () {
+            $("a").click(function (event) {
+                alert("就不让你点");
+                event.preventDefault();
+                // 如果想同时对事件对象停止冒泡和默认行为，也可以直接在事件处理函数中返回 false
+                // 这是对在事件对象上同时调用 stopPropagation() 和 preventDefault() 方法的一种简写形式。
+            });
+        });
+    </script>
+</head>
+
+<body>
+<a href="www.baidu.com">Click me!</a>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <script type="text/javascript" src="../jquery-1.11.3.js"></script>
+    <script type="text/javascript">
+        // 有时候需要通过模拟用户操作来达到单击的效果，jQuery 中使用 trigger() 方法完成模拟操作。
+        // trigger(type,[data]) 方法有两个参数，第一个是要触发的事件类型，
+        // 第二个是要传递给事件处理函数的附加数据，以数组形式传递。
+        // 通常可以通过传递一个参数给回调函数来区别这次事件是代码触发的还是用户触发的。
+        $(document).ready(function () {
+            $("#div1").click(function () {
+                alert(this.id);
+            });
+            $("#div1").trigger("click");// 触发 click 事件
+            // 也可以直接使用如下简化写法
+            $("#div1").click();
+
+            // trigger() 方法不仅能触发浏览器支持的事件，也可以触发自定义名称的事件。
+            $("#div2").bind("myClick", function () {
+                alert(this.id);
+            });
+            $("#div2").trigger("myClick");// 触发 myClick 事件
+
+            $("#div3").bind("myClick", function (event, msg1, msg2) {
+                alert(msg1 + msg2);
+            });
+            $("#div3").trigger("myClick", ["Hello ", "World"]);
+        });
+    </script>
+</head>
+
+<body>
+<div id="div1">Click me!</div>
+<div id="div2">Click me!!</div>
+<div id="div3">Click me!!!</div>
+</body>
+</html>

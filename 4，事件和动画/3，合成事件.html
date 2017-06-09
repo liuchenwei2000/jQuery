@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <script type="text/javascript" src="../jquery-1.11.3.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // jQuery 有两个合成事件——hover() 方法和 toggle() 方法
+
+            // hover() 方法用于模拟光标鼠标事件，当光标移动到元素上时触发第一个函数，移出元素时触发第二个函数
+//            $("#div1").hover(function () {
+//                alert("Enter");
+//            }, function () {
+//                alert("Leave");
+//            });
+
+            // toggle() 方法用于模拟鼠标连续单击事件，第一次单击元素触发指定的第一个函数，
+            // 当两次单击同一个元素时，则触发指定的第二个函数。如果有更多函数则依次类推。
+
+            // toggle() 方法还有另外一个作用：切换元素的可见状态。
+            // 如果元素是可见的，单击切换后则为隐藏，如果元素是隐藏的，单击切换后则为可见。
+            $("#div2").click(function () {
+                $("#div3").toggle();
+            });
+        });
+    </script>
+</head>
+
+<body>
+<div id="div1">Focus on me!</div>
+<p></p>
+<div id="div2">Click me!
+</div>
+<div id="div3">I'm here
+</div>
+</body>
+</html>

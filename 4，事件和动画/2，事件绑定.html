@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <script type="text/javascript" src="../jquery-1.11.3.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // 事件绑定
+            // 当文档装载完成后，如果想为元素绑定事件来完成某些操作，则可以使用 bind() 方法来对匹配元素进行特定事件的绑定。
+            // 格式为：bind(tyoe, [data], fn) 其中 type 表示事件类型，[data] 表示事件数据，fn 表示处理函数
+            $("#div1").bind("click", "Hello", function (event) {
+                var message = event.data;// 获取到事件数据
+                // 这里的 this 与在 JavaScript 中的作用一样，this 引用的是携带相应行为的 DOM 元素。
+                $(this).text(message);
+            });
+
+            // 简写绑定事件
+            // 对一些常见事件，jQuery 提供了一套简写的方法，如下：
+            $("#div2").click("World", function (event) {
+                var message = event.data;
+                $(this).text(message);
+            });
+        });
+    </script>
+</head>
+
+<body>
+<div id="div1">Click me!</div>
+<p></p>
+<div id="div2">Click me too!</div>
+</body>
+</html>

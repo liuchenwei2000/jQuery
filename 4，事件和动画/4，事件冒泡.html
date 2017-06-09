@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <script type="text/javascript" src="../jquery-1.11.3.js"></script>
+    <script type="text/javascript">
+        // 在页面上可以有多个事件，也可以多个元素响应同一个事件。
+        // 如下所示，<span> 元素嵌套在 <div> 元素里，并且都绑定了 click 事件。
+        // 当点击 <span> 元素的时候，会触发两次 alert，这是由事件冒泡引起的。
+        // 在单击 <span> 元素的同时，也单击了包含 <span> 元素的 <div> 元素，每一个元素都会按照特定的顺序响应 click 事件。
+        // 之所以称为冒泡，是因为事件会按照 DOM 的层次结构像水泡一样不断向上直至顶端。
+
+        // 事件冒泡可能会引起预料之外的效果，比如只想触发 <span> 元素的 click 事件，
+        // 然而 <div> 的 click 事件也同时被触发了。因此，有必要对时间的作用范围进行限制。
+        // 解决方案详见 4，事件冒泡2.html
+        $(document).ready(function () {
+            $("div").click(function () {
+                alert(this.tagName);
+            });
+            $("span").click(function () {
+                alert(this.tagName);
+            });
+        });
+    </script>
+</head>
+
+<body>
+<div><span>Click me!</span></div>
+</body>
+</html>
