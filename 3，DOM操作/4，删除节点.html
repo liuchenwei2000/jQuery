@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <script type="text/javascript" src="../jquery-1.11.3.js"></script>
+    <script type="text/javascript">
+        // jQuery 提供了三种删除节点的方法：remove()、detach() 和 empty()
+        $(document).ready(function () {
+            // remove() 方法，作用是从 DOM 中删除所有匹配的元素
+            $("#removeBtn").click(function () {
+                // 当某个节点用 remove() 方法删除后，该节点所包含的所有后代节点将同时被删除。
+                // 这个方法的返回值是一个指向已被删除的节点的引用，因此可以在以后再使用这些元素。
+                var $li1 = $("#friuts :first").remove();
+                $li1.appendTo($("#friuts"));
+
+                // remove() 方法也可以通过传递参数来选择性地删除元素，如下：
+//            $("ul li").remove("li[title=apple]");// 将 <li> 元素的 title 属性为 apple 的删除
+            });
+
+            // detach() 方法，和 remove() 一样，也是从 DOM 中去掉所有匹配的元素。
+            $("#detachBtn").click(function () {
+                // 这个方法不会把匹配的元素从 jQuery 对象中删除，因而可以在将来再使用这些匹配的元素。
+                // 与 remove() 不同的是，所有绑定的事件，附加的数据等都会保留下来。
+                var $li1 = $("#color :first").remove();
+                $li1.appendTo($("#color"));
+            });
+
+            // empty() 方法是清空节点，能够清空元素中的所有后代节点
+            $("#emptyBtn").click(function () {
+                // 清空此元素【里】的内容
+                $("#items").empty();
+            });
+        });
+    </script>
+</head>
+
+<body>
+<p>Friuts</p>
+<ul id="friuts">
+    <li title="apple">Apple</li>
+    <li title="orange">Orange</li>
+    <li title="banana">Banana</li>
+</ul>
+<button id="removeBtn">remove</button>
+
+<p>Color</p>
+<ul id="color">
+    <li>Red</li>
+    <li>Blue</li>
+    <li>Green</li>
+</ul>
+<button id="detachBtn">detach</button>
+
+<p>Items</p>
+<ul id="items">
+    <li>A</li>
+    <li>B</li>
+    <li>C</li>
+    <li>D</li>
+</ul>
+<button id="emptyBtn">empty</button>
+</body>
+</html>

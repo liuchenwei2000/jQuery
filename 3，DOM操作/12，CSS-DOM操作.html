@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <script type="text/javascript" src="../jquery-1.11.3.js"></script>
+    <script type="text/javascript">
+        // CSS-DOM 技术简单来说就是读取和设置 style 对象的各种属性，无论 css 属性是外部 CSS 导入还是内联的。
+        $(document).ready(function () {
+            // css() 方法，用于获取元素的样式属性。
+            var color = $("p").css("color");
+            console.log(color);
+
+            // 设置某个元素的单个样式
+            $("div").css("color", "blue");
+            // 设置某个元素的多个样式
+            $("span").css({"color": "green", "font-size": "30px"});
+        });
+    </script>
+    <style>
+        .red {
+            color: red;
+        }
+
+        .bigger {
+            font-size: 30px;
+        }
+    </style>
+</head>
+
+<body>
+<p class="red bigger">Paragraph</p>
+<div>div <span>span</span></div>
+</body>
+</html>

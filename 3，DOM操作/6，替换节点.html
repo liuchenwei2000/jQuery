@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <script type="text/javascript" src="../jquery-1.11.3.js"></script>
+    <script type="text/javascript">
+        // jQuery 使用 replaceWith() 和 replaceAll() 方法来完成替换某个节点的功能
+        $(document).ready(function () {
+            $("#friuts>li").click(function () {
+                // replaceWith() 方法是将所有匹配的元素都替换成指定的 HTML 或者 DOM 元素
+                $(this).replaceWith("<li>new friut</li>");
+            });
+
+            $("#color>li").click(function () {
+                // replaceAll() 方法与 replaceWith() 方法的作用相同，只是颠倒了 replaceWith() 操作
+                $("<li>new friut</li>").replaceAll("#color>li");
+            });
+            // 如果在替换之前，已经为元素绑定事件，替换后原先绑定的事件将会与被替换的元素一起消失，需要在新元素上重新绑定事件。
+        });
+    </script>
+</head>
+
+<body>
+<p>Friuts</p>
+<ul id="friuts">
+    <li title="apple">Apple</li>
+    <li title="orange">Orange</li>
+    <li title="banana">Banana</li>
+</ul>
+
+<p>Color</p>
+<ul id="color">
+    <li>Red</li>
+    <li>Blue</li>
+    <li>Green</li>
+</ul>
+</body>
+</html>

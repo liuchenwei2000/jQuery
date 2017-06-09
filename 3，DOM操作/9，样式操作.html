@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <script type="text/javascript" src="../jquery-1.11.3.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // 获取和设置样式
+            console.log($("#p1").attr("class"));// 获取 <p> 元素的 class
+            $("#p1").attr("class", "blue");// 设置 <p> 元素的 class
+
+            // 追加样式
+            // 如果给一个元素添加了多个 class 值，则相当于合并了它们的样式
+            // 如果有不同的 class 设定了同一样式属性，则后者覆盖前者
+            $("#p1").addClass("bigger");
+
+            // 移除样式
+            $("#p2").removeClass("bigger");
+            // 以空格的方式删除多个 class 名
+            $("#p3").removeClass("red bigger");
+            // 移除所有样式
+            $("#p4").removeClass();
+
+            // 判断是否含有某个样式
+            console.log($("#p1").hasClass("red"));
+        });
+    </script>
+    <style>
+        .red {
+            color:red;
+        }
+        .blue {
+            color:blue;
+        }
+        .bigger {
+            font-size: 30px;
+        }
+    </style>
+</head>
+
+<body>
+<p id="p1" class="red">div1</p>
+<p id="p2" class="red bigger">div2</p>
+<p id="p3" class="red bigger">div3</p>
+<p id="p4" class="red bigger">div4</p>
+</body>
+</html>

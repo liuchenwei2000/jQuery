@@ -1,26 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- 
-默认情况下，jQuery 用 $ 作为自身的快捷方式。
-可以在任何时候调用 jQuery.noConflict() 函数来将变量 $ 的控制权转交给其他 JavaScript 库。
--->
-<script type="text/javascript" src="../jquery-1.11.3.js"></script>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <!--
+    默认情况下，jQuery 用 $ 作为自身的快捷方式。
+    可以在任何时候调用 jQuery.noConflict() 函数来将变量 $ 的控制权转交给其他 JavaScript 库。
+    -->
+    <script type="text/javascript" src="../jquery-1.11.3.js"></script>
 
-<script type="text/javascript">
-    jQuery.noConflict();// 交出变量 $ 的控制权
-    // 接下来直接使用 jQuery 这个变量
-    jQuery(document).ready(function() {
-	});
+    <script type="text/javascript">
+        jQuery.noConflict();// 交出变量 $ 的控制权
+        // 接下来直接使用 jQuery 这个变量
+        jQuery(document).ready(function () {
+        });
 
-    // 也可以自定义 jQuery 的快捷方式
-    $j = jQuery.noConflict();
-    // 接下来直接使用 $j 这个变量
-    $j.ready(function () {
-    })
-</script>
+        // 也可以自定义 jQuery 的快捷方式
+        $j = jQuery.noConflict();
+        // 接下来直接使用 $j 这个变量
+        $j.ready(function () {
+        })
+    </script>
 </head>
-    <input type="checkbox" id="cb">
+<input type="checkbox" id="cb">
 <body>
 </body>
 </html>

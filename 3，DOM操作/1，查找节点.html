@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <script type="text/javascript" src="../jquery-1.11.3.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // 查找元素节点
+            var $li = $("ul li:first"); // 获取 <ul> 里的第一个 <li> 节点
+            console.log($li.text())
+
+            // 查找属性节点
+            var $p = $("p");
+            var title = $p.attr("title");// 获取 <p> 元素节点属性 title
+            console.log(title);
+        });
+    </script>
+</head>
+
+<body>
+<p title="Most Like">What do you most like?</p>
+<ul>
+    <li title="apple">Apple</li>
+    <li title="orange">Orange</li>
+    <li title="banana">Banana</li>
+</ul>
+</body>
+</html>

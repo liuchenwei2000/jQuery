@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <script type="text/javascript" src="../jquery-1.11.3.js"></script>
+    <script type="text/javascript">
+        // jQuery 中使用 attr() 方法来获取和设置元素属性，removeAll() 方法来删除元素属性。
+        $(document).ready(function () {
+            console.log($("#p1").attr("title"));// 获取 <p> 元素的属性 title
+
+            $("#p1").attr("title", "new title");// 设置单个属性值，传入两个参数即属性名称和对应的值
+            console.log($("#p1").attr("title"));
+
+            $("#p1").attr({"title": "hello", "name": "world"});// 设置多个属性值
+            console.log($("#p1").attr("title"));
+            console.log($("#p1").attr("name"));
+            // jQuery 中的很多方法都是同一个函数实现获取（getter）和设置（setter）的。
+            // 类似的还有 html()、text()、height()、width()、val() 和 css() 等方法。
+
+            // 删除属性使用 removeAttr() 方法
+            console.log($("#p2").attr("title"));
+            $("#p2").removeAttr("title");
+            console.log($("#p2").attr("title"));
+        });
+    </script>
+</head>
+
+<body>
+<p id="p1" title="div1" name="div1">div1</p>
+<p id="p2" title="div2">div1</p>
+</body>
+</html>

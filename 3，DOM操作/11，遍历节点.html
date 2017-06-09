@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <script type="text/javascript" src="../jquery-1.11.3.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // children() 方法，用于取得匹配元素的子元素（只有子元素而不是后代元素）集合。
+            var children = $("#friuts").children();
+            console.log(children.length);// 集合大小
+            // 遍历每一个子元素
+            for (var i = 0, len = children.length; i < len; i++) {
+                var child = children[i];// DOM 对象而不是 jQuery 对象
+                console.log(child.innerHTML);
+                console.log($(child).html());
+            }
+
+            // next() 方法，用于取得匹配元素后面紧邻的同辈元素。
+            var next = $("p").next();// 返回的是 jQuery 对象
+            console.log(next.html());
+
+            // prev() 方法，用于取得匹配元素前面紧邻的同辈元素。
+            var prev = $("strong").prev();// 返回的是 jQuery 对象
+            console.log(prev.html());
+
+            // siblings() 方法，用于取得匹配元素前后所有的同辈元素集合。
+            var siblings = $("#friuts").siblings();
+            console.log(siblings.length);// 集合大小
+            // 遍历
+            for (var i = 0, len = siblings.length; i < len; i++) {
+                var sibling = siblings[i];// DOM 对象而不是 jQuery 对象
+                console.log(sibling.innerHTML);
+                console.log($(sibling).html());
+            }
+            // 这些遍历 DOM 方法都可以使用 jQuery 表达式作为它们的参数来筛选元素
+        });
+    </script>
+</head>
+
+<body>
+<p>Paragraph</p>
+<strong>Strong</strong>
+<ul id="friuts">
+    <li title="apple">Apple</li>
+    <li title="orange">Orange</li>
+    <li title="banana">Banana</li>
+</ul>
+</body>
+</html>

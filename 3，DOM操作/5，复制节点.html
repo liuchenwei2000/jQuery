@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <script type="text/javascript" src="../jquery-1.11.3.js"></script>
+    <script type="text/javascript">
+        // jQuery 使用 clone() 方法来完成复制元素的功能
+        $(document).ready(function () {
+            $("#friuts>li").click(function () {
+                // 复制当前单击的节点，被复制的新元素并不具有任何行为（如事件）
+                var $li = $(this).clone();
+                $li.appendTo($("#friuts"));
+            });
+
+            $("#color>li").click(function () {
+                // 使用下面的方式复制元素，可以使复制的同时复制元素中所绑定的事件。
+                // 因此该元素的副本也同样具有复制功能（即同样绑定了单击事件）
+                var $li = $(this).clone(true);
+                $li.appendTo($("#color"));
+            });
+        });
+    </script>
+</head>
+
+<body>
+<p>Friuts</p>
+<ul id="friuts">
+    <li title="apple">Apple</li>
+    <li title="orange">Orange</li>
+    <li title="banana">Banana</li>
+</ul>
+
+<p>Color</p>
+<ul id="color">
+    <li>Red</li>
+    <li>Blue</li>
+    <li>Green</li>
+</ul>
+</body>
+</html>

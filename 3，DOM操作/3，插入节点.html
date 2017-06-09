@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <script type="text/javascript" src="../jquery-1.11.3.js"></script>
+    <script type="text/javascript">
+        // 动态创建 HTML 元素并没有实际用处，还需要将新创建的元素插入到文档中。
+        // 将新创建的节点插入文档最简单的办法是让它成为这个文档的某个节点的子节点。
+        $(document).ready(function () {
+            /*
+             通过 jQuery，可以很容易地添加新元素/内容。用于添加新内容的四个方法有：
+             append()：向每个匹配的元素内部追加内容
+             appendTo()：将所有匹配的元素追加到指定的元素中，颠倒了常规的 $(A).append(B)，即不是将 B 追加到 A 中，而是将 A 追加到 B 中
+             prepend()：向每个匹配的元素内部前置内容
+             prependTo()：将所有匹配的元素前置到指定的元素中
+             after()：在每个匹配的元素之后插入内容
+             insertAfter()：将所有匹配的元素插入到指定元素的后面，颠倒了常规的 $(A).after(B)，即不是将 B 插入到 A 后面，而是将 A 插入到 B 后面
+             before()：在每个匹配的元素之前插入内容
+             insertBefore()：将所有匹配的元素插入到指定元素的前面
+
+             这些插入节点的方法不仅能将新创建的 DOM 元素插入到文档中，也能对原有的 DOM 元素进行移动。
+             */
+            $("#button1").click(function () {
+                $("#p1").append(" <b>Appended text</b>.");
+            });
+
+            $("#button2").click(function () {
+                $("#ol1").append("<li>Appended item</li>");
+            });
+
+            $("#button3").click(function () {
+                $("#p2").prepend("<b>Prepended text</b>. ");
+            });
+
+            $("#button4").click(function () {
+                $("#ol2").prepend("<li>Prepended item</li>");
+            });
+
+            $("#button5").click(function () {
+                var txt1 = "<p>以 HTML 创建新元素</p>";
+                var txt2 = $("<p></p>").text("以 jQuery 创建新元素");
+                var txt3 = document.createElement("p");
+                txt3.innerHTML = "通过 DOM 来创建文本";
+                $("#p3").append(txt1, txt2, txt3);
+            });
+
+
+            $("#button6").click(function () {
+                $("img").before("<b>Before</b>");
+            });
+
+            $("#button7").click(function () {
+                $("img").after("<i>After</i>");
+            });
+        });
+    </script>
+</head>
+
+<body>
+<p id="p1">This is a paragraph.</p>
+<ol id="ol1">
+    <li>List item 1</li>
+    <li>List item 2</li>
+    <li>List item 3</li>
+</ol>
+<button id="button1">追加文本</button>
+<button id="button2">追加列表项</button>
+
+<p id="p2">This is a paragraph.</p>
+<ol id="ol2">
+    <li>List item 1</li>
+    <li>List item 2</li>
+    <li>List item 3</li>
+</ol>
+<button id="button3">添加文本</button>
+<button id="button4">添加列表项</button>
+
+<p id="p3">This is a paragraph.</p>
+<button id="button5">添加若干新元素</button>
+<br>
+<br>
+<img src="cross.png" alt="Logo"/>
+<br>
+<br>
+<button id="button6">在图片前面添加文本</button>
+<button id="button7">在图片后面添加文本</button>
+</body>
+</html>
