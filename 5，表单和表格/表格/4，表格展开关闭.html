@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="../../jquery-1.11.3.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // 给表格增加分类效果，当单击分类行时，可以关闭相应的内容。
+            // 在这个表格中，给每个 <tr> 元素设置属性是非常重要和需要技巧的。
+            $("tr.parent").click(function () {
+                // 隐藏/显示所谓的子们
+                $(this).siblings(".child_" + this.id).toggle();
+            });
+            // 分类行默认是展开的，如果当用户刚进入页面时，默认需要收缩起来，只要触发 click() 事件即可。
+//            $("tr.parent").click();
+        });
+    </script>
+    <style>
+        th {
+            width: 150px;
+        }
+
+        td {
+            text-align: center;
+        }
+        .parent {
+            background: #FFF38F;
+        }
+    </style>
+</head>
+
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>姓名</th>
+        <th>朝代</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="parent" id="row01">
+        <td colspan="2">汉族</td>
+    </tr>
+    <tr class="child_row01">
+        <td>赵匡胤</td>
+        <td>北宋</td>
+    </tr>
+    <tr class="child_row01">
+        <td>朱元璋</td>
+        <td>明</td>
+    </tr>
+    <tr class="child_row01">
+        <td>刘邦</td>
+        <td>西汉</td>
+    </tr>
+    <tr class="parent" id="row02">
+        <td colspan="2">外族</td>
+    </tr>
+    <tr class="child_row02">
+        <td>成吉思汗</td>
+        <td>蒙古</td>
+    </tr>
+    <tr class="child_row02">
+        <td>忽必烈</td>
+        <td>元</td>
+    </tr>
+    <tr class="child_row02">
+        <td>耶律阿保机</td>
+        <td>辽</td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

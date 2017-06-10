@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="../../jquery-1.11.3.js"></script>
+    <script type="text/javascript">
+        // 表单验证能够有效避免非法数据并提升用户体验。
+        $(document).ready(function () {
+
+            // 为必输项添加醒目的标记
+            $(".required").each(function () {
+                var $hl =$("<strong class='hl'>*</strong>");
+                $(this).parent().append($hl);
+            });
+
+            // 在输入项失去焦点时校验每个输入值的合法性
+            $("form :input").blur(function () {
+                var $parent = $(this).parent();
+                $parent.find(".formtips").remove();// 删除以前的提醒元素
+
+                if ($(this).is("#username")) {
+                    var error;
+                    if (this.value == "" || this.value.length < 6) {
+                        error = "<span class='formtips onError'>请输入至少六位的用户名</span>";
+                    } else {
+                        error = "<span class='formtips onSuccess'>输入正确</span>"
+                    }
+                    $parent.append($(error));
+                }
+            });
+        });
+    </script>
+    <style>
+        .hl {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+<form>
+    <div>
+        <label for="username">用户名：</label>
+        <input type="text" id="username" class="required">
+    </div>
+    <div>
+        <label for="email">邮箱：</label>
+        <input type="text" id="email" class="required">
+    </div>
+    <div>
+        <input type="submit" id="send" value="提交">
+    </div>
+</form>
+</body>
+</html>

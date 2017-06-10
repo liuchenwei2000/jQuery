@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="../../jquery-1.11.3.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // 当单击某一行后，此行被选中高亮显示，并且单选框被选中。
+            $("tbody>tr").click(function () {
+                $(this).addClass("hl");// 高亮选中行
+                $(this).siblings().removeClass("hl");// 其他行去除高亮
+                $(this).find(":radio").attr("checked", true);// 单选框选中
+            });
+        });
+    </script>
+    <style>
+        th {
+            width: 150px;
+        }
+
+        td {
+            text-align: center;
+        }
+        .hl {/* 高亮样式 */
+            background: #FFF38F;
+        }
+    </style>
+</head>
+
+<body>
+<table>
+    <thead>
+    <tr>
+        <th></th>
+        <th>姓名</th>
+        <th>朝代</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td><input type="radio" name="king"></td>
+        <td>赵匡胤</td>
+        <td>北宋</td>
+    </tr>
+    <tr>
+        <td><input type="radio" name="king"></td>
+        <td>朱元璋</td>
+        <td>明</td>
+    </tr>
+    <tr>
+        <td><input type="radio" name="king"></td>
+        <td>刘邦</td>
+        <td>西汉</td>
+    </tr>
+    <tr>
+        <td><input type="radio" name="king"></td>
+        <td>李世民</td>
+        <td>唐</td>
+    </tr>
+    <tr>
+        <td><input type="radio" name="king"></td>
+        <td>曹操</td>
+        <td>魏</td>
+    </tr>
+    <tr>
+        <td><input type="radio" name="king"></td>
+        <td>嬴政</td>
+        <td>秦</td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="../../jquery-1.11.3.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // 复选框控制表格行与单选框不同，复选框能选择多行变色，并没有限制被选择的个数。
+            // 当单击某行时，如果已经高亮了，则移除高亮样式并去掉当前行复选框的选中状态；
+            // 如果还没高亮，则添加高亮样式并将当前行的复选框选中。
+            $("tbody>tr").click(function () {
+                if($(this).hasClass("hl")){
+                    $(this).removeClass("hl")
+                        .find(":checkbox").attr("checked", false);
+                }else {
+                    $(this).addClass("hl")
+                        .find(":checkbox").attr("checked", true);
+                }
+            });
+        });
+    </script>
+    <style>
+        th {
+            width: 150px;
+        }
+
+        td {
+            text-align: center;
+        }
+
+        .hl {/* 高亮样式 */
+            background: #FFF38F;
+        }
+    </style>
+</head>
+
+<body>
+<table>
+    <thead>
+    <tr>
+        <th></th>
+        <th>姓名</th>
+        <th>朝代</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td><input type="checkbox"></td>
+        <td>赵匡胤</td>
+        <td>北宋</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox"></td>
+        <td>朱元璋</td>
+        <td>明</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox"></td>
+        <td>刘邦</td>
+        <td>西汉</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox"></td>
+        <td>李世民</td>
+        <td>唐</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox"></td>
+        <td>曹操</td>
+        <td>魏</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox"></td>
+        <td>嬴政</td>
+        <td>秦</td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

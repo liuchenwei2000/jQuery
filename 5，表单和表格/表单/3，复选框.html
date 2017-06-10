@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="../../jquery-1.11.3.js"></script>
+    <script type="text/javascript">
+        // 对复选框最基本的应用，就是提供全选、反选和全不选等操作。
+        // 复杂的操作需要与选项挂钩，来达到各种级联反应效果。
+        $(document).ready(function () {
+            // 如果需要复选框处于选中或者不选状态，必须通过控制元素的 checked 属性来达到目的。
+            // 如果属性 checked 的值为 true 则说明被选中，否则没被选中。
+            $("#checkAll").click(function () {
+                $(":checkbox").each(function(){
+                    this.checked = true;// 用 JS 原生 DOM 方法更简单一些
+                });
+            });
+
+            $("#checkNo").click(function () {
+                $(":checkbox").each(function(){
+                    this.checked = false;
+                });
+            });
+
+            $("#checkReverse").click(function () {
+                $(":checkbox").each(function(){
+                    this.checked = !this.checked;
+                });
+            });
+
+            $("#send").click(function () {
+                var msg = "选中的有：\n";
+                $(":checkbox:checked").each(function(){
+                    msg += $(this).val() + "\n";
+                });
+                alert(msg);
+            });
+        });
+    </script>
+</head>
+
+<body>
+<form>
+    你爱好的运动有：<br/>
+    <input type="checkbox" name="items" value="football">足球
+    <input type="checkbox" name="items" value="basketball">篮球
+    <input type="checkbox" name="items" value="tabletennis">乒乓球</br>
+    <input type="button" id="checkAll" value="全选">
+    <input type="button" id="checkNo" value="全不选">
+    <input type="button" id="checkReverse" value="反选">
+    <input type="button" id="send" value="提交">
+</form>
+</body>
+</html>

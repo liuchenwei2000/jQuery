@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="../jquery-1.11.3.js"></script>
+    <script type="text/javascript">
+        // 制作选项卡的原理是通过隐藏和显示来切换不同的内容。
+        $(document).ready(function () {
+            var $div_li = $("div.tab_menu ul li");
+            // 模拟点击 tab 切换页签
+            $div_li.click(function () {
+                // 被选中的页签高亮显示，其他页签隐藏
+                $(this).addClass("selected").siblings().removeClass("selected");
+                // 获取被点击 tab 的索引
+                var index = $div_li.index(this);
+                // 找到对应的 tab 展示页并显示，其他展示页隐藏
+                $("div.tab_box > div").eq(index).show().siblings().hide();
+            });
+        });
+    </script>
+    <style>
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        li {
+            float: left;
+            display: block;
+            width: 100px;
+            font-weight: bold;
+            color: #FFFFFF;
+            background-color: #bebebe;
+            text-align: center;
+            padding: 4px;
+            margin: 2px;
+        }
+
+        .selected {
+            background-color: green;
+        }
+
+        .hide {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+<div class="tab">
+    <div class="tab_menu">
+        <ul>
+            <li class="selected">时事</li>
+            <li>体育</li>
+            <li>娱乐</li>
+        </ul>
+    </div>
+    <div class="tab_box">
+        <div>这是一条时事新闻</div>
+        <div class="hide">这是一条体育新闻</div>
+        <div class="hide">这是一条娱乐新闻</div>
+    </div>
+</div>
+</body>
+</html>

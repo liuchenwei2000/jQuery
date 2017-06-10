@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="../../jquery-1.11.3.js"></script>
+    <script type="text/javascript">
+        // 多行文本框高度变化
+        $(document).ready(function () {
+            var $comment = $("#comment");
+            $(".bigger").click(function () {
+                $comment.height($comment.height() + 50);
+            });
+
+            $(".smaller").click(function () {
+//                $comment.height($comment.height() - 50);
+                // 也可以使用动画的方式进行高度调整，比直接用 height() 方法的效果要好
+                if($comment.is(":animated")) {// 判断是否处于动画中
+                    $comment.animate({height: "-=50"}, 400)
+                }
+            });
+        });
+    </script>
+    <style>
+        span {
+            border: 2px solid green;
+            background: gray;
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body>
+<form>
+    <div class="msg">
+        <div class="msg_caption">
+            <span class="bigger">放大 +</span>
+            <span class="smaller">缩小 -</span>
+        </div>
+    </div>
+    <div>
+        <textarea id="comment" rows="8" cols="20">在这里评论</textarea>
+    </div>
+</form>
+</body>
+</html>

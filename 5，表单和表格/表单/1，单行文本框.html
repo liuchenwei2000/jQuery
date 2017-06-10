@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="../../jquery-1.11.3.js"></script>
+    <script type="text/javascript">
+        // 文本框获取和失去焦点改变样式
+        $(document).ready(function () {
+            $(":input").focus(function () {
+                $(this).addClass("focus");
+            }).blur(function () {
+                $(this).removeClass("focus");
+            });
+        });
+    </script>
+    <style>
+        .focus {
+            border: 1px solid #f00;
+            background: #fcc;
+        }
+    </style>
+</head>
+
+<body>
+<form>
+    <fieldset>
+        <legend>个人基本信息</legend>
+        <div>
+            <label for="username">姓名：</label>
+            <input type="text" id="username">
+        </div>
+        <div>
+            <label for="password">密码：</label>
+            <input type="password" id="password">
+        </div>
+    </fieldset>
+</form>
+</body>
+</html>

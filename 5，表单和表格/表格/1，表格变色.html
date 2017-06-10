@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="../../jquery-1.11.3.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // 1，普通的隔行变色
+            $("tr:even").addClass("even");
+            $("tr:odd").addClass("odd");
+            // 上面的方式会将表头也算进去，如果要排除表头的行，需要用下面的方式
+//            $("tbody>tr:even").addClass("even");
+
+            // 2，行划过高亮
+            $("tbody>tr").mouseenter(function () {
+                $(this).addClass("hl");
+            }).mouseleave(function () {
+                $(this).removeClass("hl");
+            });
+        });
+    </script>
+    <style>
+        th {
+            width: 150px;
+        }
+
+        td {
+            text-align: center;
+        }
+        .even {/* 偶数行样式 */
+            background: #FFF38F;
+        }
+        .odd {/* 偶数行样式 */
+            background: #FFFFEE;
+        }
+        .hl {
+            background: #DFE7F2;
+        }
+    </style>
+</head>
+
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>姓名</th>
+        <th>朝代</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>赵匡胤</td>
+        <td>北宋</td>
+    </tr>
+    <tr>
+        <td>朱元璋</td>
+        <td>明</td>
+    </tr>
+    <tr>
+        <td>刘邦</td>
+        <td>西汉</td>
+    </tr>
+    <tr>
+        <td>李世民</td>
+        <td>唐</td>
+    </tr>
+    <tr>
+        <td>曹操</td>
+        <td>魏</td>
+    </tr>
+    <tr>
+        <td>嬴政</td>
+        <td>秦</td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

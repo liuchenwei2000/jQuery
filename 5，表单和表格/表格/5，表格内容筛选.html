@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="../../jquery-1.11.3.js"></script>
+    <script type="text/javascript">
+        // 利用 jQuery 选择器和 filter() 方法，可以实现表格内容的过滤。
+        $(document).ready(function () {
+            $("#searchBox").keyup(function () {
+                // 先隐藏所有的行，然后过滤出符合条件的行进行显示，使用到了 contains 选择器
+                $("table tbody tr").hide()
+                    .filter(":contains('" + ($(this).val()) + "')").show();
+            });
+        });
+    </script>
+    <style>
+        th {
+            width: 150px;
+        }
+
+        td {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+<div>
+    <label for="searchBox">过滤词</label>
+    <input type="text" id="searchBox">
+</div>
+<table>
+    <thead>
+    <tr>
+        <th>姓名</th>
+        <th>朝代</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>赵匡胤</td>
+        <td>北宋</td>
+    </tr>
+    <tr>
+        <td>朱元璋</td>
+        <td>明</td>
+    </tr>
+    <tr>
+        <td>刘邦</td>
+        <td>西汉</td>
+    </tr>
+    <tr>
+        <td>李世民</td>
+        <td>唐</td>
+    </tr>
+    <tr>
+        <td>曹操</td>
+        <td>魏</td>
+    </tr>
+    <tr>
+        <td>嬴政</td>
+        <td>秦</td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
