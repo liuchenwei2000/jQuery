@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="../../jquery-1.11.3.js"></script>
+    <script type="text/javascript">
+        // 网页换肤的原理是通过调用不同的样式表文件来实现不同皮肤的切换。
+        $(document).ready(function () {
+            $("ul li").click(function () {
+                $(this).addClass("selected").siblings().removeClass("selected");
+                // 设置不同的皮肤，将皮肤选择按钮 <li> 元素的 id 与网页皮肤的样式文件名称设置的相同，这样就可以完成换肤操作简化很多。
+                $("#cssfile").attr("href", this.id + ".css");
+            });
+        });
+    </script>
+    <!-- HTML 中需要一个带 id 的样式表链接，通过操作该链接的 href 属性的值，从而实现换肤。 -->
+    <link id="cssfile" href="skin_1.css" rel="stylesheet" type="text/css"/>
+    <style>
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        li {
+            float: left;
+            display: block;
+            width: 100px;
+            font-weight: bold;
+            color: #FFFFFF;
+            background-color: #bebebe;
+            text-align: center;
+            padding: 4px;
+            margin: 2px;
+        }
+
+        .selected {
+            border: 1px solid deeppink;
+        }
+
+        div div {
+            border: 1px solid black;
+            height: 100px;
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body>
+<ul id="skin">
+    <li id="skin_1" class="selected" style="background: red;">红色</li>
+    <li id="skin_2" style="background: blue;">蓝色</li>
+    <li id="skin_3" style="background: green;">绿色</li>
+</ul>
+<div>
+    <div>这是一条时事新闻</div>
+</div>
+<div>
+    <div>这是一条体育新闻</div>
+</div>
+<div>
+    <div>这是一条娱乐新闻</div>
+</div>
+</body>
+</html>
