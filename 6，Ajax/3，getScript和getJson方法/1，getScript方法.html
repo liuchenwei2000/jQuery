@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="../../jquery-1.11.3.js"></script>
+    <script type="text/javascript">
+        /**
+         * 有时候，在页面初次加载时就取得所需的全部 JavaScript 文件是完全没有必要的。
+         * 虽然可以在需要哪个 JavaScript 文件时，动态地创建 <script> 标签。
+         * 但 jQuery 提供了 $.getScript() 方法来直接加载 js 文件，与加载一个 HTML 片段一样简单方便，
+         * 并且不需要对 JavaScript 文件进行处理，JavaScript 文件会自动执行。
+         */
+        $(document).ready(function () {
+            $("#send").click(function () {
+                $.getScript("test.js", function () {
+                    alert("load test.js complete");
+                });
+            });
+        });
+    </script>
+</head>
+
+<body>
+<input type="button" id="send" value="加载 JS 文件"/>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="../../jquery-1.11.3.js"></script>
+    <script type="text/javascript">
+        /**
+         * jQuery 简化 Ajax 操作不仅体现在调用 Ajax 方法和处理响应方面，
+         * 而且还体现在对调用 Ajax 方法的过程中的 HTTP 请求的控制。
+         * 通过 jQuery 提供的一些自定义全局函数，能够为各种与 Ajax 相关的事件注册回调函数。
+         * 例如当 Ajax 请求开始时，会触发 ajaxStart() 方法的回调函数；
+         * 当 Ajax 请求结束时，会触发 ajaxStop() 方法的回调函数。
+         * 这些方法都是全局的方法，因此无论创建它们的代码位于何处，只要有 Ajax 请求发生时，就会触发它们。
+         */
+        $(document).ready(function () {
+            $("#loading").hide();
+            // 从 jQuery 1.9 开始，ajax 事件处理只能在 document 上触发
+            // 只要本页面有使用 Ajax 的地方，该事件处理函数都有效，因为它是全局的。
+            $(document).ajaxStart(function () {// ajax 请求开始
+                $("#loading").show();
+            });
+            $(document).ajaxStop(function () {// ajax 请求结束
+                $("#loading").hide();
+            });
+            // 其他几个方法
+            // ajaxComplete(callback)：Ajax 请求完成时执行的函数
+            // ajaxError(callback)：Ajax 请求发生错误时执行的函数，捕捉到的错误可以作为最后一个参数传递
+            // ajaxSend(callback)：Ajax 请求发送前执行的函数
+            // ajaxSuccess(callback)：Ajax 请求成功的执行的函数
+
+            $("#send").click(function () {
+                $.get("comments.json", function () {
+                    alert("ajax complete");
+                });
+            });
+        });
+    </script>
+</head>
+
+<body>
+<input type="button" id="send" value="获取内容"/>
+<div id="loading">Loading...</div>
+</body>
+</html>

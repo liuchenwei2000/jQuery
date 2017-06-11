@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="../../jquery-1.11.3.js"></script>
+    <script type="text/javascript">
+        // 通过为 URL 参数指定选择符，就可以很方便地从加载过来的 HTML 文档里筛选出所需要的内容。
+        $(document).ready(function () {
+            $("#send").click(function () {
+                // URL 参数的语法结构是: url selector，中间有个空格
+                $("#res").load("fragment.html .para");
+            });
+        });
+    </script>
+    <style>
+        .comment {
+            border: 1px solid pink;
+            height: 50px;
+            margin: 5px;
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+<input type="button" id="send" value="获取评论"/>
+<div class="comment">已有评论：</div>
+<div id="res"></div>
+</body>
+</html>

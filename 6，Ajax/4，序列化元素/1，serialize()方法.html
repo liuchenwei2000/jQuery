@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="../../jquery-1.11.3.js"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $("#send").click(function () {
+                // 做项目的过程中，表单是必不可少的，经常用来提供数据，例如注册、登录等。
+                // 如果使用下面的方式，将表单的每个字段的值收集起来，对少量字段的表单是可以的。
+                // 但如果表单元素越来越复杂，使用这种方式在增大工作量的同时也使表单缺乏弹性。
+                var data1 = {
+                    username: $("#username").val(),
+                    password: $("#password").val(),
+                };
+                alert(data1);
+
+                // jQuery 为这一常用操作提供了一个简化的方法——serialize()。
+                // 该方法作用于一个 jQuery 对象，它能够将 DOM 元素内容序列化为字符串，用于 ajax 请求。
+                // 即使在表单中再增加字段，脚本仍然能够使用，并且不需要做其他多余工作。
+                var data2 = $("#form1").serialize();
+                alert(data2);
+
+                // serialize() 方法作用于 jQuery 对象，所以不光只有表单能使用它，其他选择器选取的元素也能使用它。
+                // 把复选框和单选框的值序列化为字符串形式，只会将选中的值序列化。
+//                $(":checkbox,:radio").serialize();
+
+                // serializeArray() 方法不是返回字符串，而是将 DOM 元素序列化后，返回 JSON 格式的数据。
+                var data3 = $("#form1").serializeArray();
+                console.log(data3);
+
+                // param() 方法是上面两个方法的核心，用来对一个数组或对象按照 key/value 进行序列化。
+                var obj = {key1: "aaaa", key2: "bbb"};
+                alert($.param(obj));
+            });
+        });
+    </script>
+</head>
+
+<body>
+<form id="form1" action="#">
+    <fieldset>
+        <legend>个人基本信息</legend>
+        <div>
+            <label for="username">姓名：</label>
+            <input type="text" id="username" name="username">
+        </div>
+        <div>
+            <label for="password">密码：</label>
+            <input type="password" id="password" name="password">
+        </div>
+        <div>
+            <label for="sex">性别：</label>
+            <input type="radio" id="sex" name="sex" value="male" checked="checked"/>
+            Male
+            <input type="radio" name="sex" value="female"/>
+            Female
+        </div>
+        <div>
+            <label for="state">你的状态：</label>
+            <input type="checkbox" id="state" name="bike" checked="checked"/>
+            I have a bike
+            <input type="checkbox" name="car"/>
+            I have a car
+        </div>
+        <div>
+            <label for="dept">部门：</label>
+            <select id="dept" name="dept">
+                <option value="tech">
+                    技术部
+                </option>
+                <option value="sale">
+                    销售部
+                </option>
+                <option value="fina" selected="selected">
+                    财务部
+                </option>
+            </select>
+        </div>
+    </fieldset>
+    <input type="button" id="send" value="提交"/>
+</form>
+</body>
+</html>

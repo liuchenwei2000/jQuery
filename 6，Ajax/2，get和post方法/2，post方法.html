@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="../../jquery-1.11.3.js"></script>
+    <script type="text/javascript">
+        /**
+         * $.post() 方法与 $.get() 使用方式都相同。
+         */
+        $(document).ready(function () {
+            $("#send").click(function () {
+                $.post("comments.json", {
+                    username: $("#username").val(),
+                    num: $("#total").val()
+                }, function (data, status) {
+                    if (data) {
+                        for (var index in data) {
+                            $("#res").append("<div class='comment'><p>" + data[index] + "</p></div>");
+                        }
+                    }
+                }, "json");
+            });
+        });
+    </script>
+    <style>
+        .comment {
+            border: 1px solid pink;
+            height: 50px;
+            margin: 5px;
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+<input type="text" id="username"/>
+<input type="text" id="total"/>
+<input type="button" id="send" value="获取评论"/>
+<div class="comment">已有评论：</div>
+<div id="res"></div>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="../../jquery-1.11.3.js"></script>
+    <script type="text/javascript">
+        /**
+         * $.get() 方法使用 GET 方式来进行异步请求，语法如下：
+         * $.get(url [. data] [. callback] [. type])
+         *
+         * url: String，请求的 URL 地址
+         * data（可选）: Object，发送到服务器的 key/value 数据会作为 QueryString 附加到请求 URL 中
+         * callback（可选）: Function，请求成功时的回调函数（只有当 Response 的返回状态是
+         *                  success 才调用该方法）自动将请求结果和状态传递给该方法
+         * type（可选）: String，服务端返回内容的格式，包括 xml、json、text、script 和 html
+         */
+        $(document).ready(function () {
+            $("#send").click(function () {
+                $.get("comments.json", {
+                    username: $("#username").val(),
+                    num: $("#total").val()
+                }, function (data, status) {
+                    // data 表示请求返回的内容，可以是 XML 文档、JSON 文件、HTML 片段等等
+                    // status 表示请求状态
+                    // 由于服务器端返回的数据格式是 JSON 文件，因此需要对返回的数据进行处理。
+                    // 在不需要与其他应用程序共享数据的时候，使用 HTML 片段来提供返回数据一般来说是最简单的；
+                    // 如果数据需要重用，那么 JSON 是不错的选择，它在性能和文件大小方面具有优势；
+                    // 而当远程应用程序未知时，XML 文档是明智的选择，它是 Web 服务领域的世界语。
+                    if (data) {
+                        for (var index in data) {
+                            $("#res").append("<div class='comment'><p>" + data[index] + "</p></div>");
+                        }
+                    }
+                }, "json");
+            });
+        });
+    </script>
+    <style>
+        .comment {
+            border: 1px solid pink;
+            height: 50px;
+            margin: 5px;
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+<input type="text" id="username"/>
+<input type="text" id="total"/>
+<input type="button" id="send" value="获取评论"/>
+<div class="comment">已有评论：</div>
+<div id="res"></div>
+</body>
+</html>

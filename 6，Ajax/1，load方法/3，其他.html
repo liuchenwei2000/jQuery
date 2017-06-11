@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="../../jquery-1.11.3.js"></script>
+    <script type="text/javascript">
+        // load() 方法的传递方式根据参数 data 来自动指定：
+        // 如果没有参数传递，则采用 GET 方式传递，否则则会自动转换为 POST 方式。
+        $(document).ready(function () {
+            $("#send").click(function () {
+                $("#res").load("fragment.html",function (resText, status, xhr) {
+                    // resText 表示请求返回的内容
+                    // status 表示请求状态，success、error、notmodified、timeout 四种
+                    // xhr 表示 XMLHttpRequest 对象
+                });
+            });
+        });
+    </script>
+</head>
+
+<body>
+</body>
+</html>
