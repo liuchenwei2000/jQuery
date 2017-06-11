@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="../../jquery-1.11.3.js"></script>
+    <script type="text/javascript" src="jquery.validate.js"></script>
+    <script type="text/javascript">
+        // 本例通过自定义验证信息来代替默认验证信息
+        $(document).ready(function () {
+            $("#form1").validate({
+                rules: {
+                    username: {// 这里的属性名对应的是 HTML 元素的 name
+                        required: true,
+                        minlength: 2
+
+                    },
+                    email: {
+                        required: true,
+                        email: true
+                    }
+                },
+                // 这里额外定义 messages 属性，以替换默认的验证信息
+                messages: {
+                    username: {
+                        required: "请输入姓名",
+                        minlength: "请输入至少两个字符"
+                    },
+
+                    email: {
+                        required: "请输入邮箱地址",
+                        email: "请检查邮箱地址的格式"
+                    }
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+<form id="form1" action="#">
+    <fieldset>
+        <legend>简单的验证示例</legend>
+        <div>
+            <label for="username">用户名：</label><em>*</em>
+            <input type="text" id="username" name="username">
+        </div>
+        <div>
+            <label for="email">邮箱：</label><em>*</em>
+            <input type="text" id="email" name="email">
+        </div>
+        <div>
+            <input type="submit" value="提交">
+        </div>
+    </fieldset>
+</form>
+</body>
+</html>

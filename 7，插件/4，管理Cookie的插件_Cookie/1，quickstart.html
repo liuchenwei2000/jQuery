@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="../../jquery-1.11.3.js"></script>
+    <!-- 引入 Cookie 插件 -->
+    <script type="text/javascript" src="jquery.cookie.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // 读取 Cookie
+            var username = $.cookie("username");
+            if (username) {
+                $("#username").val(username);
+            }
+            $("#checkbox").click(function () {
+                if (this.checked) {
+                    // 写入 Cookie
+                    // path 参数：String，cookie 的路径属性，默认是创建该 cookie 的页面路径
+                    // domain 参数：String，cookie 的域名属性，默认是创建该 cookie 的页面域名
+                    // expires 参数：Number|Date，cookie 的有效期。
+                    // 可以设置一个整数作为有效期（单位：天），也可以直接设置一个日期对象作为 Cookie 的过期日期。
+                    // 如果指定日期为负数，例如已经过去的日子，那么 Cookie 将被删除；
+                    // 如果不设置或者设置为 null，那么 Cookie 将被当作 Session Cookie 处理，并且在浏览器关闭后删除。
+                    $.cookie("username", $("#username").val(), {
+                        path: "/",
+                        expires: 10
+                    });
+                } else {
+                    $.cookie("username", "", {
+                        path: "/"
+                    });
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+用户名：
+<input type="text" id="username" name="username"><br/>
+<input type="checkbox" id="checkbox" name="checkbox"/>记住用户名
+</body>
+</html>

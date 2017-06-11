@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="../../jquery-1.11.3.js"></script>
+    <!-- 引入 Validation 插件 -->
+    <script type="text/javascript" src="jquery.validate.js"></script>
+    <script type="text/javascript">
+        // 本例要完成的验证：
+        // 姓名必输，至少两位
+        // 邮箱必输，符合 Email 格式
+        // 主页符合 URL 格式
+        $(document).ready(function () {
+            // 确定哪个表单需要被验证
+            // 当用户输入字符时，表单元素就会实时响应验证信息，而不是只在用户单击 提交 按钮后才出现。
+            $("#form1").validate();
+        });
+    </script>
+</head>
+
+<body>
+<form id="form1" action="#">
+    <fieldset>
+        <legend>简单的验证示例</legend>
+        <div>
+            <label for="username">用户名：</label><em>*</em>
+            <!--
+            针对不同的字段，进行验证规则编码，设置字段相应的属性。
+            必须把 required、url 和 email 写到 class 属性里才能完成相应验证。
+            -->
+            <input type="text" id="username" class="required" minlength="2">
+        </div>
+        <div>
+            <label for="email">邮箱：</label><em>*</em>
+            <input type="text" id="email" class="required email">
+        </div>
+        <div>
+            <label for="curl">主页：</label><em>&nbsp;</em>
+            <input type="text" id="curl" class="url">
+        </div>
+        <div>
+            <input type="submit" value="提交">
+        </div>
+    </fieldset>
+</form>
+</body>
+</html>

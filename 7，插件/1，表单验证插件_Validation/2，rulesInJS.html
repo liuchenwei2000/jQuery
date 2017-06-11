@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="../../jquery-1.11.3.js"></script>
+    <script type="text/javascript" src="jquery.validate.js"></script>
+    <script type="text/javascript">
+        // 本例通过将验证规则全部放到 JS 代码里，从而与 HTML 元素属性无直接关联，实现行为与结构的脱钩。
+        $(document).ready(function () {
+            $("#form1").validate({
+                // 增加 rules 属性，定义各个字段的验证规则
+                rules: {
+                    username: {// 这里的属性名对应的是 HTML 元素的 name
+                        required: true,
+                        minlength: 2
+                    },
+                    email: {
+                        required: true,
+                        email: true
+                    },
+                    password: {
+                        required: true
+                    },
+                    confirm_password: {// 验证确认密码和密码必须相同
+                        required: true,
+                        equalTo: "#password"
+                    }
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+<form id="form1" action="#">
+    <fieldset>
+        <legend>简单的验证示例</legend>
+        <div>
+            <label for="username">用户名：</label><em>*</em>
+            <input type="text" id="username" name="username">
+        </div>
+        <div>
+            <label for="email">邮箱：</label><em>*</em>
+            <input type="text" id="email" name="email">
+        </div>
+        <div>
+            <label for="password">密码：</label>
+            <input id="password" name="password" type="password"/>
+        </div>
+        <div>
+            <label for="confirm_password">确认密码：</label>
+            <input id="confirm_password" name="confirm_password" type="password"/>
+        </div>
+        <div>
+            <input type="submit" value="提交">
+        </div>
+    </fieldset>
+</form>
+</body>
+</html>

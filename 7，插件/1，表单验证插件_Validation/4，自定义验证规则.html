@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="../../jquery-1.11.3.js"></script>
+    <script type="text/javascript" src="jquery.validate.js"></script>
+    <script type="text/javascript">
+        // 除了 Validation 提供的默认校验规则外，还要自定义验证规则。
+
+        // 1，定义一个验证规则
+        $.validator.addMethod("formula", // 验证方法名称
+            function (value, element, param) {// 验证规则
+                return value == eval(param);
+            }, "请输入计算结果");// 验证提示信息
+
+        $(document).ready(function () {
+            $("#form1").validate({
+                rules: {
+                    valcode: {// 这里的属性名对应的是 HTML 元素的 name
+                        required: true,
+                        // 2，调用验证规则
+                        formula: "7+9"
+                    }
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+<form id="form1" action="#">
+    <fieldset>
+        <legend>简单的验证码示例</legend>
+        <div>
+            <label for="valcode">验证码：</label><em>*</em>
+            <input type="text" id="valcode" name="valcode">=7+9
+        </div>
+        <div>
+            <input type="submit" value="提交">
+        </div>
+    </fieldset>
+</form>
+</body>
+</html>

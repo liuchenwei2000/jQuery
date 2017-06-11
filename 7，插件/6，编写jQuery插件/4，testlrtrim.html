@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="../../jquery-1.11.3.js"></script>
+    <script type="text/javascript" src="4，jquery.lrtrim.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#trim").val($.trim("   test    "));
+            $("#ltrim").val($.ltrim("   test    "));
+            $("#rtrim").val($.rtrim("   test    "));
+        });
+    </script>
+</head>
+<body>
+<textarea id="trim"></textarea>
+<textarea id="ltrim"></textarea>
+<textarea id="rtrim"></textarea>
+</body>
+</html>
